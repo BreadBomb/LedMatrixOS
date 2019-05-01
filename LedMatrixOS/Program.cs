@@ -1,4 +1,7 @@
 ﻿using System;
+using LedMatrixCSharp;
+using LedMatrixCSharp.View;
+using LedMatrixCSharp.View.Views;
 
 namespace LedMatrixOS
 {
@@ -6,7 +9,7 @@ namespace LedMatrixOS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new Application();
         }
     }
 }

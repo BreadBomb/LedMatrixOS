@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LedMatrixOS", "LedMatrixOS\LedMatrixOS.csproj", "{5F2F35A2-931C-4777-B16D-3D8A7704B8B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock", "Clock\Clock.csproj", "{6F165D07-E5D8-4C9B-8C03-7A086CA8CC88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{5F2F35A2-931C-4777-B16D-3D8A7704B8B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2F35A2-931C-4777-B16D-3D8A7704B8B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2F35A2-931C-4777-B16D-3D8A7704B8B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F165D07-E5D8-4C9B-8C03-7A086CA8CC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F165D07-E5D8-4C9B-8C03-7A086CA8CC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F165D07-E5D8-4C9B-8C03-7A086CA8CC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F165D07-E5D8-4C9B-8C03-7A086CA8CC88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
