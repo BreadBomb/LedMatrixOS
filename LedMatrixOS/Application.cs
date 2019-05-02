@@ -13,7 +13,7 @@ namespace LedMatrixOS
 {
     public class Application: MatrixApplication
     {
-        public Application(): base(true)
+        public Application(): base(false)
         {
             ModuleLoader moduleLoader = new ModuleLoader();
             moduleLoader.LoadModules();
@@ -38,11 +38,11 @@ namespace LedMatrixOS
             stack.Add(rect5);
             stack.Add(rect6);
 
-            //ScrollLayout scrollLayout = new ScrollLayout("MainScroller");
+            ScrollLayout scrollLayout = new ScrollLayout("MainScroller");
 
-            //scrollLayout.Child = stack;
+            scrollLayout.Child = stack;
 
-            Child = stack;
+            Child = scrollLayout;
         }
         
         private void UpdateTime(object sender, ElapsedEventArgs args)

@@ -7,12 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="LedMatrixCSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Applications" />
     </ItemGroup>
 
@@ -29,8 +23,14 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="LedMatrixCSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\RPI-LedMatrixGUI\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
     <PropertyGroup>
-        <SshDeployHost>192.168.1.17</SshDeployHost>
+        <SshDeployHost>raspberrypi</SshDeployHost>
         <SshDeployClean />
         <SshDeployTargetPath>/home/pi/matrix</SshDeployTargetPath>
         <SshDeployUsername>pi</SshDeployUsername>
@@ -45,7 +45,7 @@
 
     <Target Condition="$(BuildingInsideSshDeploy) ==''" Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="cd $(ProjectDir)" />
-        <Exec Command="dotnet-sshdeploy push -f netcoreapp2.2 --pre '/home/pi/stop_matrix.sh' --post '/home/pi/start_matrix.sh'" />
+        <!--Exec Command="dotnet-sshdeploy push -f netcoreapp2.2 -pre '/home/pi/stop_matrix.sh' -post '/home/pi/start_matrix.sh'" /-->
     </Target>
 
 </Project>
