@@ -4,4 +4,10 @@
         <TargetFramework>netcoreapp2.2</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="LedMatrixCSharp">
+        <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
