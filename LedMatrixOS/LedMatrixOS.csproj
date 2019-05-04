@@ -19,6 +19,9 @@
         <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
         <EmbedInteropTypes></EmbedInteropTypes>
       </Reference>
+      <Reference Include="LedMatrixCSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\RPI-LedMatrixGUI\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <ItemGroup>
@@ -26,6 +29,9 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="librgbmatrix.so">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Fonts\5x7.bdf">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
@@ -46,7 +52,7 @@
 
     <Target Condition="$(BuildingInsideSshDeploy) ==''" Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="cd $(ProjectDir)" />
-        <Exec Command="dotnet-sshdeploy push -f netcoreapp2.2 --pre '/home/pi/stop_matrix.sh' --post '/home/pi/start_matrix.sh'" />
+        <!--Exec Command="dotnet-sshdeploy push -f netcoreapp2.2 -pre '/home/pi/stop_matrix.sh' -post '/home/pi/start_matrix.sh'" /-->
     </Target>
 
 </Project>
