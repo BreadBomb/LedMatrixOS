@@ -9,6 +9,7 @@ using LedMatrixCSharp.View.Views;
 using LedMatrixCSharp.View.Layout;
 using LedMatrixOS.Util;
 using System.Diagnostics;
+using Unosquare.RaspberryIO.Abstractions;
 
 namespace LedMatrixOS
 {
@@ -21,57 +22,23 @@ namespace LedMatrixOS
             ModuleLoader moduleLoader = new ModuleLoader();
             moduleLoader.LoadModules();
             
-            Controls.AddScroller("MainScroller", "P1Pin36", "P1Pin38");
+            Controls.Instance.AddScroller("MainScroller", P1.Pin35, P1.Pin37);
 
-            ScrollLayout layout = new ScrollLayout("da");
-            
-            AnimatedChar hour1 = new AnimatedChar('0');
-            AnimatedChar hour2 = new AnimatedChar('0');
-            AnimatedChar dot = new AnimatedChar(':');
-            AnimatedChar minute1 = new AnimatedChar('0');
-            AnimatedChar minute2 = new AnimatedChar('0');
-            AnimatedChar dot2 = new AnimatedChar(':');
-            AnimatedChar second1 = new AnimatedChar('0');
-            AnimatedChar second2 = new AnimatedChar('0');
+            ScrollLayout scrollLayout = new ScrollLayout("MainScroller");
 
             StackPanel stackPanel = new StackPanel();
-            StackPanel stackPanel2 = new StackPanel();
-            StackPanel stackPanel3 = new StackPanel();
 
+            Rectangle rect1 = new Rectangle(0, 0, 32, 32, CanvasColor.PINK, CanvasColor.WHITE);
+            Rectangle rect2 = new Rectangle(0, 0, 31, 16, CanvasColor.RED);
+            Rectangle rect3 = new Rectangle(0, 0, 31, 16, CanvasColor.GREEN);
+            Rectangle rect4 = new Rectangle(0, 0, 31, 16, CanvasColor.ORANGE);
 
-            stackPanel.Orientation = Orientation.Horizontal;
-            stackPanel3.Orientation = Orientation.Horizontal;
-            
-            stackPanel.Add(hour1);
-            stackPanel.Add(hour2);
-            stackPanel.Add(dot);
-            stackPanel.Add(minute1);
-            stackPanel.Add(minute2);
-            
-            
-            stackPanel3.Add(second1);
-            stackPanel3.Add(second2);
-            
-            
-            stackPanel2.Add(stackPanel);
-            stackPanel2.Add(stackPanel3);
-            
-            Child = stackPanel2;
+            stackPanel.Add(rect1);
+            stackPanel.Add(rect2);
+            stackPanel.Add(rect3);
+            stackPanel.Add(rect4);
 
-            Timer t = new Timer();
-            t.Elapsed += (s, a) =>
-            {
-                var time = DateTime.Now.ToString("HH:mm:ss");
-                
-                hour1.ChangeChar(time[0]);
-                hour2.ChangeChar(time[1]);
-                minute1.ChangeChar(time[3]);
-                minute2.ChangeChar(time[4]);
-                second1.ChangeChar(time[6]);
-                second2.ChangeChar(time[7]);
-            };
-            t.Interval = 1000;
-            t.Start();
+            Child = stackPanel;
         }
     }
 }
