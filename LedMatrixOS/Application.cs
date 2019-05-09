@@ -1,15 +1,10 @@
-using System;    
-using System.ComponentModel;
-using System.Net;
-using System.Timers;
 using LedMatrixCSharp;
 using LedMatrixCSharp.Utils;
 using LedMatrixCSharp.View;
 using LedMatrixCSharp.View.Views;
-using LedMatrixCSharp.View.Layout;
 using LedMatrixOS.Util;
-using System.Diagnostics;
 using Unosquare.RaspberryIO.Abstractions;
+using Rectangle = LedMatrixCSharp.View.Views.Rectangle;
 
 namespace LedMatrixOS
 {
@@ -20,25 +15,24 @@ namespace LedMatrixOS
         public Application(): base(false)
         {
             ModuleLoader moduleLoader = new ModuleLoader();
-            moduleLoader.LoadModules();
+            var applications = moduleLoader.LoadModules();
             
             Controls.Instance.AddScroller("MainScroller", P1.Pin35, P1.Pin37);
 
-            ScrollLayout scrollLayout = new ScrollLayout("MainScroller");
 
-            StackPanel stackPanel = new StackPanel();
+            ListView listView = new ListView("MainScroller");
+            listView.FixedHeight = 32;
+            listView.FixedWidth = 32;
 
-            Rectangle rect1 = new Rectangle(0, 0, 32, 32, CanvasColor.PINK, CanvasColor.WHITE);
-            Rectangle rect2 = new Rectangle(0, 0, 31, 16, CanvasColor.RED);
-            Rectangle rect3 = new Rectangle(0, 0, 31, 16, CanvasColor.GREEN);
-            Rectangle rect4 = new Rectangle(0, 0, 31, 16, CanvasColor.ORANGE);
+            var font = BDFFont.LoadFont5x7();
 
-            stackPanel.Add(rect1);
-            stackPanel.Add(rect2);
-            stackPanel.Add(rect3);
-            stackPanel.Add(rect4);
-
-            Child = stackPanel;
+            foreach (var a in applications)
+            {
+                Label l = new Label(a, font, CanvasColor.WHITE);
+                listView.Add(l);
+            }
+            
+            Child = listView;
         }
     }
 }

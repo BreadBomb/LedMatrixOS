@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -6,7 +8,7 @@ namespace LedMatrixOS.Util
 {
     public class ModuleLoader
     {
-        public void LoadModules()
+        public IEnumerable<string> LoadModules()
         {
             string[] files = Directory.GetFiles(Path.Join(Environment.CurrentDirectory, "Applications"));
             foreach (string file in files)
@@ -22,7 +24,7 @@ namespace LedMatrixOS.Util
                 
                 var name = nameField.GetValue(obj) as string;
                 
-                Console.WriteLine(name);
+                yield return name;
             }
         }
     }
