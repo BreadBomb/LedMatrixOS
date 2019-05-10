@@ -1,6 +1,7 @@
 using LedMatrixCSharp;
 using LedMatrixCSharp.Utils;
 using LedMatrixCSharp.View;
+using LedMatrixCSharp.View.Layout;
 using LedMatrixCSharp.View.Views;
 using LedMatrixOS.Util;
 using Unosquare.RaspberryIO.Abstractions;
@@ -28,8 +29,23 @@ namespace LedMatrixOS
 
             foreach (var a in applications)
             {
-                Label l = new Label(a, font, CanvasColor.WHITE);
-                listView.Add(l);
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Orientation = Orientation.Horizontal;
+                Label l = new Label(a.Name, font, CanvasColor.WHITE);
+                if (a.Stream == null)
+                {
+                } else
+                {
+                    Image i = new Image(a.Stream);
+                    i.X = 1;
+                    i.Y = 1;
+                    stackPanel.Add(i);
+                    l.X = 2;
+                }
+
+                stackPanel.Add(l);
+
+                listView.Add(stackPanel);
             }
             
             Child = listView;
