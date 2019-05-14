@@ -16,15 +16,85 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="LedMatrixCSharp">
-            <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
-        </Reference>
-        <Reference Include="LedMatrixCSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\RPI-LedMatrixGUI\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
-        </Reference>
+      <ProjectReference Include="..\LedMatrixOSUtils\LedMatrixOSUtils.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="LedMatrixCSharp">
+        <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Animations\Loading\0.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\1.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\10.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\11.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\12.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\13.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\14.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\15.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\16.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\17.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\18.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\19.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\2.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\20.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\21.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\3.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\4.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\5.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\6.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\7.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\8.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\9.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Animations\Loading\animation.config">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
         <None Update="Applications\Clock.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
@@ -40,7 +110,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <SshDeployHost>famegrame</SshDeployHost>
+        <SshDeployHost>192.168.1.17</SshDeployHost>
         <SshDeployClean />
         <SshDeployTargetPath>/home/pi/matrix</SshDeployTargetPath>
         <SshDeployUsername>pi</SshDeployUsername>

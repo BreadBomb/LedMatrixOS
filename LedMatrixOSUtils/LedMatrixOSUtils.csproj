@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="LedMatrixCSharp">
+      <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

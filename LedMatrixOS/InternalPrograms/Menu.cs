@@ -5,27 +5,34 @@ using LedMatrixCSharp.Utils;
 using LedMatrixCSharp.View.Layout;
 using LedMatrixCSharp.View.Views;
 using LedMatrixOS.Util;
+using LedMatrixOSUtils;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading;
 
-namespace LedMatrixOS.Windows
+namespace LedMatrixOS.InternalPrograms
 {
-    public class MenuEntry
+    public class Menu: MatrixProgram
     {
-        public string Name { get; set; }
-        public Stream Stream { get; set; }
-    }
+        private BDFFont font;
+        private IEnumerable<MenuEntry> applications;
 
-    public class Menu: Window
-    {
-        public Menu()
+        public override void LoadProgramAsync()
         {
+            font = BDFFont.LoadFont5x7();
+            Console.WriteLine("Font loaded");
+
             ModuleLoader moduleLoader = new ModuleLoader();
-            var applications = moduleLoader.LoadModules();
-            
+            applications = moduleLoader.LoadModules();
+            Console.WriteLine("Modules loaded");
+        }
+
+        public override void StartProgram()
+        {
+            base.StartProgram();
             ListView listView = new ListView("MainScroller");
             listView.FixedHeight = 32;
             listView.FixedWidth = 32;
-
-            var font = BDFFont.LoadFont5x7();
 
             foreach (var a in applications)
             {
@@ -44,14 +51,21 @@ namespace LedMatrixOS.Windows
                 stackPanel.Add(l);
 
                 listView.Add(stackPanel);
-
-                View = listView;
             }
-            
+
+            View = listView;
+
+
             Controls.Instance.OnButtonClick("ScrollerBtn", () =>
             {
-                Console.WriteLine("BUTTON!!!!");
+                Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+                ProgramManager.StartProgram(applications.ToList()[0]);
             });
+        }
+
+        public override void UpdateProgram()
+        {
+            base.UpdateProgram();
         }
     }
 }
