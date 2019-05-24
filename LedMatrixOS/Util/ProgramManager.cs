@@ -1,5 +1,5 @@
 using System;
-using System.Threading;
+using System.Timers;
 using LedMatrixOSUtils;
 
 namespace LedMatrixOS.Util
@@ -11,22 +11,39 @@ namespace LedMatrixOS.Util
 
         public static IMatrixProgram ActiveProgram { get; set; }
 
+        private static Timer timer;
+
         public static void StartProgram(IMatrixProgram program)
         {
+            if (timer == null)
+            {
+                timer = new Timer();
+                timer.Interval = 100;
+                timer.Elapsed += (s, a) =>
+                {
+                    ActiveProgram.UpdateProgram();
+                };
+            }
+
+            if (ActiveProgram != null)
+            {
+                StopActiveProgram();
+            }
             program.LoadProgram((s,a) =>
             {
-                Console.WriteLine("Start program");
                 program.StartProgram();
-                ViewChanged();
+                timer.Start();
+                ViewChanged?.Invoke();
             });
-            Console.WriteLine("CHange View");
-            ViewChanged();
             ActiveProgram = program;
+            ViewChanged?.Invoke();
         }
 
         public static void StopActiveProgram()
         {
             ActiveProgram = null;
+            timer.Stop();
+            ViewChanged?.Invoke();
         }
     }
 }

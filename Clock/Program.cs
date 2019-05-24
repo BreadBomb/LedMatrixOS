@@ -15,6 +15,7 @@ namespace Clock
 
         public override void LoadProgramAsync()
         {
+            Console.WriteLine("Load Clock");
             base.LoadProgramAsync();
             font = BDFFont.LoadFont4x6();
         }
@@ -22,7 +23,7 @@ namespace Clock
         public override void StartProgram()
         {
             base.StartProgram();
-            Console.WriteLine("Start");
+            Console.WriteLine("Start Clock");
 
             l = new Label("00", font, CanvasColor.WHITE);
 
@@ -31,7 +32,7 @@ namespace Clock
 
         public override void UpdateProgram()
         {
-            l.Text = DateTime.Now.ToString("HH:mm");
+            l.Text = DateTime.Now.ToString("HH:mm:ss");
 
             base.UpdateProgram();
         }

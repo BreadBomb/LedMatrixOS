@@ -7,6 +7,7 @@ using LedMatrixCSharp.View.Layout;
 using LedMatrixCSharp.View.Views;
 using LedMatrixOS.InternalPrograms;
 using LedMatrixOS.Util;
+using Unosquare.PiGpio.NativeEnums;
 using Unosquare.RaspberryIO.Abstractions;
 using Rectangle = LedMatrixCSharp.View.Views.Rectangle;
 
@@ -16,8 +17,8 @@ namespace LedMatrixOS
     {
         public Application() : base(false)
         {
-            Controls.Instance.AddScroller("MainScroller", P1.Pin35, P1.Pin37);
-            Controls.Instance.AddButton("ScrollerBtn", P1.Pin36);
+            Controls.Instance.AddScroller("MainScroller", SystemGpio.Bcm19, SystemGpio.Bcm26);
+            Controls.Instance.AddButton("ScrollerBtn", SystemGpio.Bcm16);
 
             Menu menu = new Menu();
 
@@ -25,11 +26,10 @@ namespace LedMatrixOS
 
             ProgramManager.ViewChanged += () =>
             {
-                Console.WriteLine("View Changed");
-                Child = ProgramManager.ActiveProgram.View;
+                Child = ProgramManager.ActiveProgram?.View;
             };
 
-            Child = ProgramManager.ActiveProgram.View;
+            Child = ProgramManager.ActiveProgram?.View;
         }
     }
 }

@@ -12,6 +12,8 @@
 
     <ItemGroup>
         <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0-preview4.19212.13" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.6.0-preview6.19259.10" />
+        <PackageReference Include="Unosquare.PiGpio" Version="0.0.2" />
         <PackageReference Include="Unosquare.Raspberry.Abstractions" Version="0.3.0" />
     </ItemGroup>
 
@@ -110,7 +112,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <SshDeployHost>192.168.1.17</SshDeployHost>
+        <SshDeployHost>192.168.1.7</SshDeployHost>
         <SshDeployClean />
         <SshDeployTargetPath>/home/pi/matrix</SshDeployTargetPath>
         <SshDeployUsername>pi</SshDeployUsername>
@@ -125,7 +127,7 @@
 
     <Target Condition="$(BuildingInsideSshDeploy) ==''" Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="cd $(ProjectDir)" />
-        <Exec Command="dotnet-sshdeploy push -f netcoreapp2.2 --pre '/home/pi/stop_matrix.sh' --post '/home/pi/start_matrix.sh'" />
+        <Exec Command="dotnet-sshdeploy push -f netcoreapp2.2" />
     </Target>
 
 </Project>

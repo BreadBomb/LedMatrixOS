@@ -26,10 +26,9 @@ namespace LedMatrixOS.Util
         public PropertyInfo _View { get; set; }
         public object ProgramInstance { get; set; }
 
-        public void LoadProgram(RunWorkerCompletedEventHandler onComplete = null)
+        public void LoadProgram(RunWorkerCompletedEventHandler onComplete)
         {
-            Console.WriteLine("Load Loaded Program");
-            _LoadProgram.Invoke(ProgramInstance, null);
+            _LoadProgram.Invoke(ProgramInstance, new object[] { onComplete });
         }
 
         public void StartProgram()

@@ -19,16 +19,16 @@ namespace LedMatrixOS.InternalPrograms
 
         public override void LoadProgramAsync()
         {
+            Console.WriteLine("Load Menu");
             font = BDFFont.LoadFont5x7();
-            Console.WriteLine("Font loaded");
 
             ModuleLoader moduleLoader = new ModuleLoader();
             applications = moduleLoader.LoadModules();
-            Console.WriteLine("Modules loaded");
         }
 
         public override void StartProgram()
         {
+            Console.WriteLine("Start Menu");
             base.StartProgram();
             ListView listView = new ListView("MainScroller");
             listView.FixedHeight = 32;
@@ -54,11 +54,9 @@ namespace LedMatrixOS.InternalPrograms
             }
 
             View = listView;
-
-
-            Controls.Instance.OnButtonClick("ScrollerBtn", () =>
+            
+            Controls.Instance.OnButtonClick("ScrollerBtn", (gpio, level, time) =>
             {
-                Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
                 ProgramManager.StartProgram(applications.ToList()[0]);
             });
         }
@@ -66,6 +64,7 @@ namespace LedMatrixOS.InternalPrograms
         public override void UpdateProgram()
         {
             base.UpdateProgram();
+
         }
     }
 }

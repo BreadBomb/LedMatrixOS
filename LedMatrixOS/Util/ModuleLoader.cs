@@ -30,7 +30,7 @@ namespace LedMatrixOS.Util
 
                 FieldInfo nameField = assemblyType.GetField("Name");
 
-                MethodInfo loadProgram = programAssemblyType.GetMethod("LoadProgramAsync");
+                MethodInfo loadProgram = programAssemblyType.GetMethod("LoadProgram");
                 MethodInfo startProgram = programAssemblyType.GetMethod("StartProgram");
                 MethodInfo updateProgram = programAssemblyType.GetMethod("UpdateProgram");
 
