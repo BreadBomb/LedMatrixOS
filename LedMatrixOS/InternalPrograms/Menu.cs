@@ -9,6 +9,7 @@ using LedMatrixOSUtils;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
+using RaspberrySharp.IO.GeneralPurpose;
 
 namespace LedMatrixOS.InternalPrograms
 {
@@ -55,10 +56,16 @@ namespace LedMatrixOS.InternalPrograms
 
             View = listView;
             
-            Controls.Instance.OnButtonClick("ScrollerBtn", (gpio, level, time) =>
+            Controls.Instance.OnButtonClick("ScrollerBtn", KnobClicked);
+        }
+
+        private void KnobClicked(object sender, PinStatusEventArgs e)
+        {
+            if (e.Enabled)
             {
+                Controls.Instance.ButtonUnsubscribe("ScrollerBtn", KnobClicked);
                 ProgramManager.StartProgram(applications.ToList()[0]);
-            });
+            }
         }
 
         public override void UpdateProgram()
