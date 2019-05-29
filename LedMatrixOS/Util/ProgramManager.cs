@@ -1,6 +1,5 @@
 using System;
 using System.Timers;
-using LedMatrixOSUtils;
 
 namespace LedMatrixOS.Util
 {
@@ -22,6 +21,7 @@ namespace LedMatrixOS.Util
                 timer.Elapsed += (s, a) =>
                 {
                     ActiveProgram.UpdateProgram();
+                    ViewChanged?.Invoke();
                 };
             }
 

@@ -1,11 +1,10 @@
 ﻿using LedMatrixCSharp.Utils;
 using LedMatrixCSharp.View;
-using LedMatrixCSharp.View.Views;
-using LedMatrixOSUtils;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using LedMatrixCSharp.View.Layout;
+using LedMatrixCSharp.View.Views;
+using LedMatrixOS.Util;
+using System;
+using System.Timers;
 
 namespace Clock
 {
@@ -16,11 +15,15 @@ namespace Clock
         Label minutes;
         Label dots;
 
+        bool an = true;
+
+        Timer t;
+
         public override void LoadProgramAsync()
         {
             Console.WriteLine("Load Clock");
             base.LoadProgramAsync();
-            font = BDFFont.LoadFont9x15();
+            font = BDFFont.LoadFont8x13B();
         }
 
         public override void StartProgram()
@@ -29,8 +32,10 @@ namespace Clock
             Console.WriteLine("Start Clock");
 
             StackPanel time = new StackPanel();
+            time.X = 4;
+            time.Y = 3;
             
-            hours = new Label("00", font, CanvasColor.WHITE);
+            hours = new Label(" 00", font, CanvasColor.WHITE);
             
             time.Add(hours);
             
@@ -45,14 +50,30 @@ namespace Clock
             
             time.Add(dotsMinutes);
             
-            Console.WriteLine($"{time.Width} {time.Height}");
-            
-            View = dots;
+            t = new Timer();
+            t.Interval = 500;
+            t.Elapsed += (s, a) =>
+            {                
+                Console.WriteLine(dots.Text);
+                if (an)
+                {
+                    dots.Text = " ";
+                    an = false;
+                }
+                else
+                {
+                    dots.Text = ":";
+                    an = true;
+                }
+            };
+            t.Start();
+
+            View = time;
         }
 
         public override void UpdateProgram()
         {
-            hours.Text = DateTime.Now.ToString("HH");
+            hours.Text = DateTime.Now.ToString(" HH");
             minutes.Text = DateTime.Now.ToString("mm");
 
             base.UpdateProgram();

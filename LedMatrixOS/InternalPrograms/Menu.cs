@@ -5,7 +5,6 @@ using LedMatrixCSharp.Utils;
 using LedMatrixCSharp.View.Layout;
 using LedMatrixCSharp.View.Views;
 using LedMatrixOS.Util;
-using LedMatrixOSUtils;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading;

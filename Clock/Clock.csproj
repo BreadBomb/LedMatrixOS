@@ -15,15 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LedMatrixOSUtils\LedMatrixOSUtils.csproj" />
+      <ProjectReference Include="..\LedMatrixOS\LedMatrixOS.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Reference Include="LedMatrixCSharp">
         <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="LedMatrixCSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\RPI-LedMatrixGUI\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
       </Reference>
     </ItemGroup>
 

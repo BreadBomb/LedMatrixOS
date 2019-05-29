@@ -17,15 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LedMatrixOSUtils\LedMatrixOSUtils.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Reference Include="LedMatrixCSharp">
         <HintPath>..\..\..\source\repos\LedMatrixCSharp\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="LedMatrixCSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\RPI-LedMatrixGUI\LedMatrixCSharp\bin\Debug\netcoreapp2.2\LedMatrixCSharp.dll</HintPath>
       </Reference>
     </ItemGroup>
 
@@ -102,6 +95,63 @@
         <None Update="Applications\Clock.dll">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Fonts\10x20.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\5x8.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\6x10.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\6x12.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\6x13.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\6x13B.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\6x13O.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\6x9.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\7x13.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\7x13B.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\7x13O.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\7x14.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\7x14B.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\8x13.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\8x13B.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\8x13O.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\9x15B.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\9x18.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Fonts\9x18B.bdf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
         <None Update="librgbmatrix.so">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
@@ -117,7 +167,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <SshDeployHost>famegrame</SshDeployHost>
+        <SshDeployHost>192.168.1.7</SshDeployHost>
         <SshDeployClean />
         <SshDeployTargetPath>/home/pi/matrix</SshDeployTargetPath>
         <SshDeployUsername>pi</SshDeployUsername>

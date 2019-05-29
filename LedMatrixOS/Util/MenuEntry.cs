@@ -1,5 +1,4 @@
 ﻿using LedMatrixCSharp.View;
-using LedMatrixOSUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

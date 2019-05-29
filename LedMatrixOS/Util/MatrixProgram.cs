@@ -8,9 +8,10 @@ using LedMatrixCSharp.Utils;
 using LedMatrixCSharp.View;
 using LedMatrixCSharp.View.Layout;
 using LedMatrixCSharp.View.Views;
+using LedMatrixOS.InternalPrograms;
 using RaspberrySharp.IO.GeneralPurpose;
 
-namespace LedMatrixOSUtils
+namespace LedMatrixOS.Util
 {
     public class MatrixProgram : IMatrixProgram
     {
@@ -63,7 +64,7 @@ namespace LedMatrixOSUtils
                     menuIsShown = true;
                 } else
                 {
-                    StartProgram();
+                    ProgramManager.StartProgram(new Menu());
                 }
             }
         }
